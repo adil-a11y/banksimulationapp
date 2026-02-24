@@ -76,60 +76,66 @@ const Login = () => {
   };
 
   return (
-    <div className="glass-center">
-      <div className="glass-card glass-container glass-animate-in">
-        <div className="text-center mb-8">
-          <h1 className="text-title">Bank Simulation</h1>
-          <p className="text-label">Sign in to your account</p>
+    <div className="auth-page">
+      <div className="auth-card">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="text-4xl mb-2">🏦</div>
+          <h1 className="auth-title">Bank Simulation</h1>
+          <p className="auth-subtitle">Secure access to your account</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="glass-flex-col space-y-6">
-          <Input
-            label="Username or Email"
+        {/* Form */}
+        <form onSubmit={handleSubmit}>
+          <input
             type="text"
             name="username"
             value={formData.username}
             onChange={handleChange}
-            placeholder="Enter your username or email"
-            error={error.username}
+            placeholder="Username or Email"
+            className={`auth-input ${error.username ? 'border-red-500' : ''}`}
             required
-            className="glass-input"
           />
+          {error.username && (
+            <div className="text-red-500 text-sm mb-4 text-left">{error.username}</div>
+          )}
 
-          <div>
-            <Input
-              label="Password"
+          <div className="relative">
+            <input
               type={showPassword ? 'text' : 'password'}
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Enter your password"
-              error={error.password}
+              placeholder="Password"
+              className={`auth-input ${error.password ? 'border-red-500' : ''}`}
               required
-              className="glass-input"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="glass-button glass-button-sm"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300 transition-colors"
             >
-              {showPassword ? 'Hide Password' : 'Show Password'}
+              {showPassword ? '👁️' : '👁️'}
             </button>
           </div>
+          {error.password && (
+            <div className="text-red-500 text-sm mb-4 text-left">{error.password}</div>
+          )}
 
-          <Button
+          <button
             type="submit"
-            loading={loading}
-            className="glass-button glass-button-primary w-full"
+            disabled={loading}
+            className="auth-button"
           >
             {loading ? 'Signing in...' : 'Sign In'}
-          </Button>
+          </button>
         </form>
 
-        <div className="text-center mt-6">
-          <p className="text-label">
+        {/* Secondary Action */}
+        <div className="text-center">
+          <p className="auth-link">
             Don't have an account?{' '}
-            <Link to="/register" className="text-primary-light dark:text-primary-dark font-medium">
+            <Link to="/register" className="text-blue-500 hover:text-blue-400 transition-colors">
               Sign up
             </Link>
           </p>

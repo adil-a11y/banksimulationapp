@@ -109,84 +109,92 @@ const Register = () => {
   };
 
   return (
-    <div className="glass-center">
-      <div className="glass-card glass-container glass-animate-in">
-        <div className="text-center mb-8">
-          <h1 className="text-title">Bank Simulation</h1>
-          <p className="text-label">Create your account</p>
+    <div className="auth-page">
+      <div className="auth-card">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="text-4xl mb-2">🏦</div>
+          <h1 className="auth-title">Bank Simulation</h1>
+          <p className="auth-subtitle">Create your account</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="glass-flex-col space-y-6">
-          <Input
-            label="Full Name"
+        {/* Form */}
+        <form onSubmit={handleSubmit}>
+          <input
             type="text"
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
-            placeholder="Enter your full name"
-            error={error.fullName}
+            placeholder="Full Name"
+            className={`auth-input ${error.fullName ? 'border-red-500' : ''}`}
             required
-            className="glass-input"
           />
+          {error.fullName && (
+            <div className="text-red-500 text-sm mb-4 text-left">{error.fullName}</div>
+          )}
 
-          <Input
-            label="Username"
+          <input
             type="text"
             name="username"
             value={formData.username}
             onChange={handleChange}
-            placeholder="Choose a username"
-            error={error.username}
+            placeholder="Username"
+            className={`auth-input ${error.username ? 'border-red-500' : ''}`}
             required
-            className="glass-input"
           />
+          {error.username && (
+            <div className="text-red-500 text-sm mb-4 text-left">{error.username}</div>
+          )}
 
-          <Input
-            label="Email"
+          <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Enter your email address"
-            error={error.email}
+            placeholder="Email Address"
+            className={`auth-input ${error.email ? 'border-red-500' : ''}`}
             required
-            className="glass-input"
           />
+          {error.email && (
+            <div className="text-red-500 text-sm mb-4 text-left">{error.email}</div>
+          )}
 
-          <div>
-            <Input
-              label="Password"
+          <div className="relative">
+            <input
               type={showPassword ? 'text' : 'password'}
               name="password"
               value={formData.password}
               onChange={handleChange}
-              placeholder="Create a password (min 6 characters)"
-              error={error.password}
+              placeholder="Password (min 6 characters)"
+              className={`auth-input ${error.password ? 'border-red-500' : ''}`}
               required
-              className="glass-input"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="glass-button glass-button-sm"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-300 transition-colors"
             >
-              {showPassword ? 'Hide Password' : 'Show Password'}
+              {showPassword ? '👁️' : '👂️'}
             </button>
           </div>
+          {error.password && (
+            <div className="text-red-500 text-sm mb-4 text-left">{error.password}</div>
+          )}
 
-          <Button
+          <button
             type="submit"
-            loading={loading}
-            className="glass-button glass-button-primary w-full"
+            disabled={loading}
+            className="auth-button"
           >
             {loading ? 'Creating Account...' : 'Create Account'}
-          </Button>
+          </button>
         </form>
 
-        <div className="text-center mt-6">
-          <p className="text-label">
+        {/* Secondary Action */}
+        <div className="text-center">
+          <p className="auth-link">
             Already have an account?{' '}
-            <Link to="/login" className="text-primary-light dark:text-primary-dark font-medium">
+            <Link to="/login" className="text-blue-500 hover:text-blue-400 transition-colors">
               Sign in
             </Link>
           </p>
