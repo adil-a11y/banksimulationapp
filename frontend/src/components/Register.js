@@ -109,14 +109,14 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
+    <div className="glass-center">
+      <div className="glass-card glass-container glass-animate-in">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Bank Simulation</h1>
-          <p className="text-gray-600">Create your account</p>
+          <h1 className="text-title">Bank Simulation</h1>
+          <p className="text-label">Create your account</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="glass-flex-col space-y-6">
           <Input
             label="Full Name"
             type="text"
@@ -126,6 +126,7 @@ const Register = () => {
             placeholder="Enter your full name"
             error={error.fullName}
             required
+            className="glass-input"
           />
 
           <Input
@@ -137,6 +138,7 @@ const Register = () => {
             placeholder="Choose a username"
             error={error.username}
             required
+            className="glass-input"
           />
 
           <Input
@@ -145,9 +147,10 @@ const Register = () => {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            placeholder="Enter your email"
+            placeholder="Enter your email address"
             error={error.email}
             required
+            className="glass-input"
           />
 
           <div>
@@ -160,11 +163,12 @@ const Register = () => {
               placeholder="Create a password (min 6 characters)"
               error={error.password}
               required
+              className="glass-input"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="mt-2 text-sm text-purple-600 hover:text-purple-800"
+              className="glass-button glass-button-sm"
             >
               {showPassword ? 'Hide Password' : 'Show Password'}
             </button>
@@ -173,16 +177,16 @@ const Register = () => {
           <Button
             type="submit"
             loading={loading}
-            className="w-full"
+            className="glass-button glass-button-primary w-full"
           >
             {loading ? 'Creating Account...' : 'Create Account'}
           </Button>
         </form>
 
         <div className="text-center mt-6">
-          <p className="text-gray-600">
+          <p className="text-label">
             Already have an account?{' '}
-            <Link to="/login" className="text-purple-600 hover:text-purple-800 font-medium">
+            <Link to="/login" className="text-primary-light dark:text-primary-dark font-medium">
               Sign in
             </Link>
           </p>

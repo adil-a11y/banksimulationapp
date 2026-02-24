@@ -1,0 +1,373 @@
+/* iOS Glassmorphism Design System */
+
+:root {
+  /* Light mode colors */
+  --glass-bg-light: rgba(255, 255, 255, 0.1);
+  --glass-border-light: rgba(255, 255, 255, 0.2);
+  --glass-shadow-light: rgba(0, 0, 0, 0.1);
+  --primary-gradient-light: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --bg-gradient-light: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  
+  /* Dark mode colors */
+  --glass-bg-dark: rgba(15, 23, 42, 0.4);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+  --glass-shadow-dark: rgba(0, 0, 0, 0.3);
+  --primary-gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --bg-gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  
+  /* Glass blur values */
+  --glass-blur: blur(20px);
+  --glass-blur-light: blur(10px);
+  --glass-border-radius: 20px;
+  --glass-border-radius-sm: 12px;
+  --glass-border-radius-lg: 24px;
+  
+  /* Transitions */
+  --glass-transition: all 0.3s ease;
+  --glass-transform-hover: scale(1.03);
+  --glass-shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-gradient-light);
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.dark body {
+  background: var(--bg-gradient-dark);
+}
+
+/* Glassmorphism Base Components */
+.glass {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--glass-border-radius);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: 0 8px 32px var(--glass-shadow-light);
+  transition: var(--glass-transition);
+}
+
+.dark .glass {
+  background: var(--glass-bg-dark);
+  border-color: var(--glass-border-dark);
+  box-shadow: 0 8px 32px var(--glass-shadow-dark);
+}
+
+.glass-sm {
+  border-radius: var(--glass-border-radius-sm);
+}
+
+.glass-lg {
+  border-radius: var(--glass-border-radius-lg);
+}
+
+/* Glass Card */
+.glass-card {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--glass-border-radius);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: 0 8px 32px var(--glass-shadow-light);
+  transition: var(--glass-transition);
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+.dark .glass-card {
+  background: var(--glass-bg-dark);
+  border-color: var(--glass-border-dark);
+  box-shadow: 0 8px 32px var(--glass-shadow-dark);
+}
+
+/* Glass Button */
+.glass-button {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur-light);
+  -webkit-backdrop-filter: var(--glass-blur-light);
+  border-radius: var(--glass-border-radius-sm);
+  border: 1px solid var(--glass-border-light);
+  color: #1f2937;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--glass-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.glass-button:hover {
+  transform: var(--glass-transform-hover);
+  box-shadow: var(--glass-shadow-hover);
+  background: var(--glass-bg-light);
+}
+
+.dark .glass-button {
+  background: var(--glass-bg-dark);
+  color: #f3f4f6;
+  border-color: var(--glass-border-dark);
+}
+
+.dark .glass-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Primary Glass Button */
+.glass-button-primary {
+  background: var(--primary-gradient-light);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.glass-button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.dark .glass-button-primary {
+  background: var(--primary-gradient-dark);
+}
+
+/* Glass Input */
+.glass-input {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur-light);
+  -webkit-backdrop-filter: var(--glass-blur-light);
+  border-radius: var(--glass-border-radius-sm);
+  border: 1px solid var(--glass-border-light);
+  color: #1f2937;
+  padding: 12px 16px;
+  font-size: 16px;
+  transition: var(--glass-transition);
+  width: 100%;
+  outline: none;
+}
+
+.glass-input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.dark .glass-input {
+  background: var(--glass-bg-dark);
+  color: #f3f4f6;
+  border-color: var(--glass-border-dark);
+}
+
+.dark .glass-input:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* Glass Navigation */
+.glass-nav {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: 0 0 var(--glass-border-radius) var(--glass-border-radius) 0;
+  border: 1px solid var(--glass-border-light);
+  box-shadow: 0 4px 20px var(--glass-shadow-light);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.dark .glass-nav {
+  background: var(--glass-bg-dark);
+  border-color: var(--glass-border-dark);
+  box-shadow: 0 4px 20px var(--glass-shadow-dark);
+}
+
+/* Glass Container */
+.glass-container {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--glass-border-radius);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: 0 8px 32px var(--glass-shadow-light);
+  padding: 2rem;
+  margin: 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dark .glass-container {
+  background: var(--glass-bg-dark);
+  border-color: var(--glass-border-dark);
+  box-shadow: 0 8px 32px var(--glass-shadow-dark);
+}
+
+/* Glass Modal */
+.glass-modal {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--glass-border-radius-lg);
+  border: 1px solid var(--glass-border-light);
+  box-shadow: 0 20px 40px var(--glass-shadow-light);
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  margin: auto;
+}
+
+.dark .glass-modal {
+  background: var(--glass-bg-dark);
+  border-color: var(--glass-border-dark);
+  box-shadow: 0 20px 40px var(--glass-shadow-dark);
+}
+
+/* Typography */
+.text-balance {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.dark .text-balance {
+  color: #f3f4f6;
+}
+
+.text-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.dark .text-label {
+  color: #9ca3af;
+}
+
+.text-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.dark .text-title {
+  color: #f3f4f6;
+}
+
+/* Transaction Items */
+.glass-transaction {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur-light);
+  -webkit-backdrop-filter: var(--glass-blur-light);
+  border-radius: var(--glass-border-radius-sm);
+  border: 1px solid var(--glass-border-light);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-left: 4px solid #667eea;
+}
+
+.dark .glass-transaction {
+  background: var(--glass-bg-dark);
+  border-color: var(--glass-border-dark);
+  border-left-color: #8b5cf6;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glass-animate-in {
+  animation: slideUp 0.4s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .glass-container {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .glass-modal {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .glass-nav {
+    padding: 0.75rem 1rem;
+  }
+  
+  .text-balance {
+    font-size: 2rem;
+  }
+}
+
+/* Utility Classes */
+.glass-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.glass-flex {
+  display: flex;
+  gap: 1rem;
+}
+
+.glass-flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.glass-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Status Colors */
+.status-success {
+  color: #10b981;
+}
+
+.status-error {
+  color: #ef4444;
+}
+
+.status-warning {
+  color: #f59e0b;
+}
+
+.dark .status-success {
+  color: #34d399;
+}
+
+.dark .status-error {
+  color: #f87171;
+}
+
+.dark .status-warning {
+  color: #fbbf24;
+}

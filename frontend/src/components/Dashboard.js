@@ -112,27 +112,32 @@ const Dashboard = () => {
   return (
     <>
       <Navigation />
-      <div className="dashboard-container">
-        <div className="max-w-6xl mx-auto">
-        {/* Welcome Header */}
-        <Card className="mb-6">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-800">
-                Welcome back, {user.fullName}! 👋
-              </h1>
-              <p className="text-gray-600 mt-2">
-                Account: {user.accountNumber} | {user.accountType || 'Savings'} Account
-              </p>
+      <div className="glass-container">
+        <div className="glass-animate-in">
+          {/* Welcome Header */}
+          <Card className="glass-card mb-6">
+            <div className="text-center">
+              <h1 className="text-title">Welcome back, {user?.fullName || 'User'}!</h1>
+              <p className="text-label">Here's your financial overview</p>
             </div>
-            <Button
-              onClick={handleLogout}
-              variant="danger"
-            >
-              Logout
-            </Button>
+          </Card>
+
+          <div className="glass-grid">
+            {/* Account Info */}
+            <Card className="glass-card">
+              <div className="text-center">
+                <h3 className="text-title">Account Information</h3>
+                <p className="text-label">Account: {user.accountNumber} | {user.accountType || 'Savings'} Account</p>
+              </div>
+              <Button
+                onClick={handleLogout}
+                variant="outline"
+                className="glass-button"
+              >
+                Logout
+              </Button>
+            </Card>
           </div>
-        </Card>
 
         {/* Fraud Alert Widget */}
         {fraudAlerts.length > 0 && (

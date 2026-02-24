@@ -11,15 +11,16 @@ const Input = ({
   className = '',
   ...props 
 }) => {
-  const baseClasses = 'w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-colors';
-  const errorClasses = error ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:border-purple-500';
+  const baseClasses = 'transition-all duration-200';
+  
+  const errorClasses = error ? 'border-red-500' : 'border-glass-border-light dark:border-glass-border-dark';
   
   return (
     <div className="mb-4">
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-2">
+        <label className="block text-label mb-2">
           {label}
-          {required && <span className="text-red-500 ml-1">*</span>}
+          {required && <span className="status-error ml-1">*</span>}
         </label>
       )}
       <input
@@ -27,12 +28,12 @@ const Input = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`${baseClasses} ${errorClasses} ${className}`}
+        className={`glass-input ${errorClasses} ${className}`}
         required={required}
         {...props}
       />
       {error && (
-        <p className="mt-1 text-sm text-red-600">{error}</p>
+        <p className="mt-1 text-sm status-error">{error}</p>
       )}
     </div>
   );

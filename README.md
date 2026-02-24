@@ -10,7 +10,6 @@ A full-stack bank simulation application with JWT authentication, MySQL database
 - **Transaction History**: View all transactions
 - **Modern UI**: Responsive design with Tailwind CSS
 - **Security**: Password hashing, rate limiting, CORS protection
-- **AI Assistant**: (Currently Disabled) AI-powered financial guidance interface
 
 ## Tech Stack
 
@@ -65,8 +64,7 @@ DB_USER=your_username
 DB_PASSWORD=your_password
 DB_NAME=defaultdb
 JWT_SECRET=your-secret-key
-PORT=5001
-FRONTEND_URL=http://localhost:3000
+PORT=5000
 ```
 
 4. Set up the database:
@@ -76,7 +74,7 @@ mysql -h mysql-348b4ad6-adilpashags-a1ac.i.aivencloud.com -P 22837 -u your_usern
 
 5. Start the backend server:
 ```bash
-npm start
+npm run dev
 ```
 
 ### Frontend Setup
@@ -108,12 +106,6 @@ npm start
 - `POST /api/bank/transfer` - Transfer money
 - `GET /api/bank/transactions` - Get transaction history
 
-### AI Assistant (Disabled)
-- `POST /api/ai/chat` - Returns disabled message
-
-### Health Check
-- `GET /api/health` - Server health status
-
 ## Security Features
 
 - JWT tokens stored in database with expiration
@@ -132,10 +124,6 @@ npm start
 4. View transaction history
 5. Secure logout with token invalidation
 
-## AI Assistant Status
-
-The AI Assistant feature is currently disabled. The UI remains intact but returns a disabled message when accessed. This can be re-enabled in future versions.
-
 ## Default Test Users
 
 The database includes sample users for testing:
@@ -147,11 +135,7 @@ Note: You'll need to set actual passwords for these users in the database.
 ## Development
 
 The application uses:
-- Backend runs on port 5001
-- Frontend runs on port 3001
+- Backend runs on port 5000
+- Frontend runs on port 3000
 - MySQL database on Aiven cloud
 - JWT tokens with 24-hour expiration
-
-## Repository
-
-This project is hosted at: https://github.com/adil-a11y/banksimulation.git

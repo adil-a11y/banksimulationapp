@@ -198,87 +198,29 @@ const AIAssistant = () => {
   ];
 
   return (
-    <div className="ai-assistant-page">
+    <div className="glass-center">
       {/* AI Disabled Banner */}
       {isAIDisabled && (
-        <div style={{
-          backgroundColor: '#fef3c7',
-          border: '1px solid #f59e0b',
-          borderRadius: '8px',
-          padding: '12px 16px',
-          margin: '16px',
-          textAlign: 'center',
-          color: '#92400e'
-        }}>
-          <strong>AI Services Unavailable</strong>
-          <br />
-          <span style={{ fontSize: '14px' }}>AI features are currently disabled. Please contact support for more information.</span>
+        <div className="glass-card glass-container glass-animate-in">
+          <div className="text-center">
+            <div className="text-2xl mb-2">🤖</div>
+            <h3 className="text-title">AI Services Unavailable</h3>
+            <p className="text-label">AI features are currently disabled. Please contact support for more information.</p>
+          </div>
         </div>
       )}
 
       {/* Landing Section */}
       {!showChat && messages.length === 0 && (
-        <div className="ai-landing">
-          <div className="ai-landing-content">
+        <div className="glass-card glass-container glass-animate-in">
+          <div className="text-center">
             <div className="ai-header">
               <div className="ai-logo">
                 <Sparkles size={48} />
               </div>
-              <h1>AI Assistant</h1>
-              <p className="ai-subtitle">What can I help you with?</p>
+              <h1 className="text-title">AI Assistant</h1>
+              <p className="text-label">What can I help you with?</p>
             </div>
-
-            {/* Main Input */}
-            <div className="ai-main-input-container">
-              <div className="ai-main-input-wrapper">
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder={isAIDisabled ? "AI services are currently disabled" : "Ask anything about your finances, loans, spending..."}
-                  className="ai-main-input"
-                  disabled={isAIDisabled}
-                />
-                <button
-                  onClick={handleSendMessage}
-                  disabled={!inputValue.trim() || isLoading || isAIDisabled}
-                  className="ai-main-send-btn"
-                >
-                  {isLoading ? (
-                    <div className="ai-loading-spinner"></div>
-                  ) : (
-                    <Send size={20} />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            {/* Quick Suggestions */}
-            <div className="ai-quick-suggestions">
-              <h3>Quick Questions</h3>
-              <div className="suggestions-grid">
-                {quickQuestions.map((question, index) => (
-                  <button
-                    key={index}
-                    onClick={() => handleQuickQuestion(question)}
-                    className="suggestion-chip"
-                  >
-                    {question}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Features */}
-            <div className="ai-features">
-              <div className="feature-card">
-                <TrendingUp className="feature-icon" />
-                <h4>Financial Insights</h4>
-                <p>Get personalized advice based on your spending patterns</p>
-              </div>
-              <div className="feature-card">
                 <Shield className="feature-icon" />
                 <h4>Loan Guidance</h4>
                 <p>Understand eligibility and optimize your loan applications</p>

@@ -76,14 +76,14 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
+    <div className="glass-center">
+      <div className="glass-card glass-container glass-animate-in">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">Bank Simulation</h1>
-          <p className="text-gray-600">Sign in to your account</p>
+          <h1 className="text-title">Bank Simulation</h1>
+          <p className="text-label">Sign in to your account</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="glass-flex-col space-y-6">
           <Input
             label="Username or Email"
             type="text"
@@ -93,6 +93,7 @@ const Login = () => {
             placeholder="Enter your username or email"
             error={error.username}
             required
+            className="glass-input"
           />
 
           <div>
@@ -105,11 +106,12 @@ const Login = () => {
               placeholder="Enter your password"
               error={error.password}
               required
+              className="glass-input"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="mt-2 text-sm text-purple-600 hover:text-purple-800"
+              className="glass-button glass-button-sm"
             >
               {showPassword ? 'Hide Password' : 'Show Password'}
             </button>
@@ -118,16 +120,16 @@ const Login = () => {
           <Button
             type="submit"
             loading={loading}
-            className="w-full"
+            className="glass-button glass-button-primary w-full"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>
 
         <div className="text-center mt-6">
-          <p className="text-gray-600">
+          <p className="text-label">
             Don't have an account?{' '}
-            <Link to="/register" className="text-purple-600 hover:text-purple-800 font-medium">
+            <Link to="/register" className="text-primary-light dark:text-primary-dark font-medium">
               Sign up
             </Link>
           </p>
