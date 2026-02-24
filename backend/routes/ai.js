@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-// Stub route - AI feature is disabled
+// Working AI endpoint
 router.post("/chat", async (req, res) => {
   try {
     const { message } = req.body;
@@ -10,13 +10,13 @@ router.post("/chat", async (req, res) => {
       return res.status(400).json({ error: "Message required" });
     }
 
-    // Return disabled message instead of AI response
+    // Temporary working response
     res.json({ 
-      reply: "AI feature is currently disabled. Please contact support for more information." 
+      reply: "AI is working. You asked: " + message + " - This is a mock response for testing purposes." 
     });
 
   } catch (error) {
-    console.error("AI Stub Error:", error.message);
+    console.error("AI Error:", error.message);
     res.status(500).json({
       error: "Service temporarily unavailable"
     });

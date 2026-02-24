@@ -372,7 +372,7 @@
 /* Responsive Design */
 @media (max-width: 480px) {
   .ai-chat-panel {
-    width: calc(100vw - 40px);
+    width: calc(100% - 40px);
     right: -10px;
     height: 450px;
   }

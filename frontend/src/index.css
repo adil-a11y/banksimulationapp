@@ -5,6 +5,13 @@
 /* Import iOS Glassmorphism Design System */
 @import './styles/glassmorphism.css';
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -193,4 +200,11 @@ code {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #6b7280;
+}
+
+/* App container to prevent overflow */
+.app-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }

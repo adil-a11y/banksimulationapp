@@ -181,13 +181,38 @@ body {
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 1000;
 }
 
 .dark .glass-nav {
   background: var(--glass-bg-dark);
   border-color: var(--glass-border-dark);
   box-shadow: 0 4px 20px var(--glass-shadow-dark);
+}
+
+/* Horizontal Scroll Navigation */
+.nav-scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  gap: 2rem;
+}
+
+.nav-scroll > * {
+  flex: 0 0 auto;
+}
+
+/* Hide scrollbar for clean UI */
+.nav-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-scroll {
+  scrollbar-width: none;
 }
 
 /* Glass Container */

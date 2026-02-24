@@ -31,7 +31,7 @@ const Navigation = () => {
 
   return (
     <nav className="glass-nav">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
@@ -41,7 +41,7 @@ const Navigation = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center nav-scroll">
             {navItems.map((item) => (
               <Link
                 key={item.path}
