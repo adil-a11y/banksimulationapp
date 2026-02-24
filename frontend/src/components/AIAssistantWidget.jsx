@@ -159,22 +159,24 @@ const AIAssistantWidget = ({ userContext = {} }) => {
                 <p>Feel free to ask me anything!</p>
               </div>
             ) : (
-              messages.map((message) => (
-                <div
-                  key={message.id}
-                  className={`glass-transaction ${message.sender === 'user' ? 'user-message' : 'ai-message'}`}
-                >
-                  <div className="flex items-center space-x-3">
-                    <div className="text-xl">
-                      {message.sender === 'user' ? <User size={18} /> : <Bot size={18} />}
-                    </div>
-                    <div>
-                      <p className="font-medium">{message.text}</p>
-                      <p className="text-sm">{formatTimestamp(message.timestamp)}</p>
+              <div>
+                {messages.map((message) => (
+                  <div
+                    key={message.id}
+                    className={`glass-transaction ${message.sender === 'user' ? 'user-message' : 'ai-message'}`}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className="text-xl">
+                        {message.sender === 'user' ? <User size={18} /> : <Bot size={18} />}
+                      </div>
+                      <div>
+                        <p className="font-medium">{message.text}</p>
+                        <p className="text-sm">{formatTimestamp(message.timestamp)}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))
+                ))}
+              </div>
             )}
             
             {isTyping && (
