@@ -214,7 +214,7 @@ const AIAssistantWidget = ({ userContext = {} }) => {
               />
               <button
                 onClick={handleSendMessage}
-                disabled={!inputValue.trim() || isLoading || isAIDisabled}
+                disabled={!inputValue.trim() || isLoading}
                 className="glass-button glass-button-primary"
               >
                 {isLoading ? (
@@ -224,6 +224,7 @@ const AIAssistantWidget = ({ userContext = {} }) => {
                 )}
               </button>
             </div>
+          </div>
 
           {/* Clear Chat Button */}
           <div className="text-center mt-4">
