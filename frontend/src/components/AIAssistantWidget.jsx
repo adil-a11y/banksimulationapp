@@ -119,132 +119,120 @@ const AIAssistantWidget = ({ userContext = {} }) => {
       {/* Floating Button */}
       <div className={`ai-widget-container ${isOpen ? 'open' : ''}`}>
         <button
-          className="ai-widget-button"
+          className="glass-button glass-button-sm"
           onClick={toggleChat}
           aria-label="AI Assistant"
         >
-          {isOpen ? (
-            <X size={24} />
-          ) : (
-            <MessageCircle size={24} />
-          )}
+          {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
         </button>
+      </div>
 
-        {/* Chat Panel */}
-        {isOpen && (
-          <div className="ai-chat-panel">
-            {/* Header */}
-            <div className="ai-chat-header">
-              <div className="ai-header-content">
-                <div className="ai-avatar">
-                  <Bot size={20} />
-                </div>
-                <div className="ai-header-info">
-                  <h3>AI Assistant</h3>
-                  <span className="ai-status">Online</span>
-                </div>
+      {/* Chat Panel */}
+      {isOpen && (
+        <div className="glass-card glass-modal glass-animate-in">
+          {/* Header */}
+          <div className="glass-transaction">
+            <div className="flex items-center space-x-3">
+              <div className="text-xl">
+                <Bot size={20} />
               </div>
-              <div className="ai-header-actions">
-                <button
-                  className="ai-clear-btn"
-                  onClick={clearChat}
-                  title="Clear chat"
-                >
-                  Clear
-                </button>
-                <button
-                  className="ai-close-btn"
-                  onClick={toggleChat}
-                >
-                  <X size={18} />
-                </button>
-              </div>
-            </div>
-
-            {/* Messages */}
-            <div className="ai-messages-container">
-              {messages.length === 0 ? (
-                <div className="ai-welcome-message">
-                  <Bot size={40} />
-                  <h4>Hello! I'm your AI Banking Assistant</h4>
-                  <p>I can help you with:</p>
-                  <ul>
-                    <li>Loan eligibility questions</li>
-                    <li>Credit score improvement tips</li>
-                    <li>Spending analysis</li>
-                    <li>Banking product information</li>
-                  </ul>
-                  <p>Feel free to ask me anything!</p>
-                </div>
-              ) : (
-                messages.map((message) => (
-                  <div
-                    key={message.id}
-                    className={`ai-message ${message.sender === 'user' ? 'user-message' : 'ai-message'}`}
-                  >
-                    <div className="message-avatar">
-                      {message.sender === 'user' ? (
-                        <User size={16} />
-                      ) : (
-                        <Bot size={16} />
-                      )}
-                    </div>
-                    <div className="message-content">
-                      <p>{message.text}</p>
-                      <span className="message-timestamp">
-                        {formatTimestamp(message.timestamp)}
-                      </span>
-                    </div>
-                  </div>
-                ))
-              )}
-              
-              {/* Typing Indicator */}
-              {isTyping && (
-                <div className="ai-message ai-message">
-                  <div className="message-avatar">
-                    <Bot size={16} />
-                  </div>
-                  <div className="typing-indicator">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-              )}
-              
-              <div ref={messagesEndRef} />
-            </div>
-
-            {/* Input */}
-            <div className="ai-input-container">
-              <div className="ai-input-wrapper">
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Ask about your finances, loans, or banking..."
-                  className="ai-input"
-                  disabled={isLoading}
-                />
-                <button
-                  onClick={handleSendMessage}
-                  disabled={!inputValue.trim() || isLoading}
-                  className="ai-send-button"
-                >
-                  {isLoading ? (
-                    <div className="ai-loading-spinner"></div>
-                  ) : (
-                    <Send size={18} />
-                  )}
-                </button>
+              <div>
+                <h3 className="text-title">AI Assistant</h3>
+                <span className="ai-status">Online</span>
               </div>
             </div>
           </div>
-        )}
-      </div>
+
+          {/* Messages */}
+          <div className="ai-messages-container">
+            {messages.length === 0 ? (
+              <div className="ai-welcome-message">
+                <Bot size={40} />
+                <h4>Hello! I'm your AI Banking Assistant</h4>
+                <p>I can help you with:</p>
+                <ul>
+                  <li>Loan eligibility questions</li>
+                  <li>Credit score improvement tips</li>
+                  <li>Spending analysis</li>
+                  <li>Banking product information</li>
+                </ul>
+                <p>Feel free to ask me anything!</p>
+              </div>
+            ) : (
+              messages.map((message) => (
+                <div
+                  key={message.id}
+                  className={`glass-transaction ${message.sender === 'user' ? 'user-message' : 'ai-message'}`}
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="text-xl">
+                      {message.sender === 'user' ? <User size={18} /> : <Bot size={18} />}
+                    </div>
+                    <div>
+                      <p className="font-medium">{message.text}</p>
+                      <p className="text-sm">{formatTimestamp(message.timestamp)}</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
+            
+            {isTyping && (
+              <div className="glass-transaction ai-message">
+                <div className="flex items-center space-x-3">
+                  <div className="text-xl">
+                    <Bot size={18} />
+                  </div>
+                  <div>
+                    <div className="typing-indicator">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Input */}
+          <div className="glass-transaction">
+            <div className="glass-input-wrapper">
+              <input
+                ref={inputRef}
+                type="text"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Ask anything about your finances, loans, spending..."
+                className="glass-input"
+              />
+              <button
+                onClick={handleSendMessage}
+                disabled={!inputValue.trim() || isLoading}
+                className="glass-button glass-button-primary"
+              >
+                {isLoading ? (
+                  <div className="ai-loading-spinner"></div>
+                ) : (
+                  <Send size={20} />
+                )}
+              </button>
+            </div>
+
+          {/* Clear Chat Button */}
+          <div className="text-center mt-4">
+            <button
+              onClick={clearChat}
+              className="glass-button glass-button-sm"
+            >
+              Clear Chat
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 };
