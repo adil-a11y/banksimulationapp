@@ -53,7 +53,7 @@ const AIAssistantWidget = ({ userContext = {} }) => {
   };
 
   const handleSendMessage = async () => {
-    if (!inputValue.trim() || isLoading) return;
+    if (!inputValue.trim() || isLoading || isAIDisabled) return;
 
     const userMessage = {
       id: Date.now(),
@@ -208,12 +208,13 @@ const AIAssistantWidget = ({ userContext = {} }) => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Ask anything about your finances, loans, spending..."
+                placeholder={isAIDisabled ? "AI services are currently disabled" : "Ask anything about your finances, loans, spending..."}
                 className="glass-input"
+                disabled={isAIDisabled}
               />
               <button
                 onClick={handleSendMessage}
-                disabled={!inputValue.trim() || isLoading}
+                disabled={!inputValue.trim() || isLoading || isAIDisabled}
                 className="glass-button glass-button-primary"
               >
                 {isLoading ? (
